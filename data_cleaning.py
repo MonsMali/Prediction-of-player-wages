@@ -7,7 +7,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 # Importing merged data 
-final = pd.read_csv("C:/Users/Administrator/OneDrive/Ambiente de Trabalho/Master Classes/2nd Semester/Data Science project/Football project/top5 eur leagues DSP/merged_data_for_analysis.csv")
+final = pd.read_csv("merged_data_for_analysis.csv")
 
 # Deleting specific columns:
 # first column, as it is a counter 
@@ -16,7 +16,7 @@ final = pd.read_csv("C:/Users/Administrator/OneDrive/Ambiente de Trabalho/Master
 # columns 'Nationality' and 'Club' becuase of too many unique categories
 for idx, col in enumerate(final.columns):
     print(f"Index: {idx}, Column Name: {col}")
-columns_to_delete_indices = [0, 1, 2, 13, 17]
+columns_to_delete_indices = [0, 2, 13, 17]
 all_indices = list(range(len(final.columns)))
 remaining_indices = [i for i in all_indices if i not in columns_to_delete_indices]
 final = final.iloc[:, remaining_indices]
@@ -141,4 +141,4 @@ final_no_outliers = final[~outliers]
 
 
 # Storing the clean data for modelling
-final_no_outliers.to_csv('C:/Users/Administrator/OneDrive/Ambiente de Trabalho/Master Classes/2nd Semester/Data Science project/Football project/top5 eur leagues DSP/player_stats_final.csv', index=False)
+final_no_outliers.to_csv('player_stats_final_FINAL000.csv', index=False)
